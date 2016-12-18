@@ -47,6 +47,18 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$urlMa
                 templateUrl: '/templates/news.tpl.html',
                 controller:'NewsCtrl',
                 resolve: load(['/js/controllers/NewsCtrl.js'])
+            })
+            .state('app.login', {
+                url: '/login',
+                templateUrl: '/templates/login.html',
+                controller:'LoginCtrl',
+                resolve: load(['/js/controllers/UserCtrl.js'])
+            })
+            .state('app.register', {
+                url: '/register',
+                templateUrl: '/templates/register.html',
+                controller:'RegisterCtrl',
+                resolve: load(['/js/controllers/UserCtrl.js'])
             });
 
         function load(srcs, callback) {

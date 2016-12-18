@@ -1,9 +1,14 @@
-app.controller('AppCtrl', ['$scope', function($scope) {
+app.controller('AppCtrl', ['$rootScope', '$scope', '$http', function($rootScope, $scope, $http) {
 
 
-    $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
-        console.log('state', fromState, toState);
-    })
+    // $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
+    //     console.log('state', fromState, toState);
+    // })
+
+    if(localStorage && localStorage.getItem('auth_token')) {
+        $http.defaults.headers.common.Authorization = localStorage.getItem('auth_token');
+        $rootScope.authorized = true;
+    }
 
 
 

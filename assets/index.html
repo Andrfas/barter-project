@@ -60,10 +60,10 @@
       <div class="page-content">
 
         <!-- Header Bar -->
-        <div class="row header">
+        <div class="row header" ng-controller="HeaderCtrl">
           <div class="col-xs-12">
             <div class="user pull-right">
-              <div class="item dropdown" uib-dropdown>
+              <div ng-if="$root.authorized" class="item dropdown" uib-dropdown>
                 <a href="#" class="dropdown-toggle" uib-dropdown-toggle>
                   <img src="img/avatar.jpg">
                 </a>
@@ -89,13 +89,16 @@
                   </li>
                   <li class="divider"></li>
                   <li class="link">
-                    <a href="#">
+                    <a ng-click="ctr.logout()">
                       Logout
                     </a>
                   </li>
                 </ul>
               </div>
-              <div class="item dropdown" uib-dropdown>
+              <div ng-if="!$root.authorized" class="item">
+                <button ui-sref="app.login" class="btn btn-success">LOGIN</button>
+              </div>
+              <!-- <div class="item dropdown" uib-dropdown>
                <a href="#" class="dropdown-toggle" uib-dropdown-toggle>
                   <i class="fa fa-bell-o"></i>
                 </a>
@@ -108,7 +111,7 @@
                     <a href="#">Server Down!</a>
                   </li>
                 </ul>
-              </div>
+              </div> -->
             </div>
             <div class="meta">
               <div class="page">
@@ -140,8 +143,10 @@
         <script src="/js/dependencies/scriptjs.js"></script>
         <script src="/js/app-routes.js"></script>
         <script src="/js/app-ctrl.js"></script>
+        <script src="/js/controllers/HeaderCtrl.js"></script>
 
 
         <script src="/js/services/Api.service.js"></script>
+        <script src="/js/services/User.service.js"></script>
     </body>
 </html>
