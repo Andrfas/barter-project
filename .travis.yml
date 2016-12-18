@@ -12,6 +12,5 @@ services:
 before_script:
   - git config --global user.email "andrfas@gmail.com"
   - git config --global user.name "Andrey Mikh"
-  - npm install jasmine-node -g
   - docker build -t aggregator .
-  - docker run -p 1337:1337  --link aggregator-mysql -e DATABASE_HOST=aggregator-mysql aggregator sails lift
+  - docker run -p 1337:1337  --link mysql -e DATABASE_HOST=mysql aggregator sails lift
