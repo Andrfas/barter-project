@@ -21,6 +21,12 @@ function create(req, res) {
 }
 
 function subscribeToSource(req, res) {
+    if(!req.params.sourceId) {
+        return res.json(500, { error: 'source id should be specified' });
+    }
+    if(!req.session.user_id) {
+        return res.json(401, { error: 'please login' });
+    }
     var obj = {
         sourceId: req.params.sourceId,
         userId : req.session.user_id

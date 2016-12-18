@@ -10,7 +10,6 @@ module.exports = {
       source: data.sourceId
     }
     Subscribtion.findOrCreate(obj).exec(function(err, createdSubscr){
-        console.log('1', err)
         if (err) {
           return deferred.reject(new Error(err));
         } else {

@@ -50,8 +50,11 @@ module.exports.routes = {
   // 'PUT /api/sources/:sourceId/subscribe': 'SourcesController.unsubscribeFromSource',
 
   'POST /api/articles': 'ArticlesController.list',
+  'PATCH /api/articles/:articleId': 'ArticlesController.update',
   'PUT /api/article/set_latest': 'ArticlesController.set_latest',
   'PUT /api/article/test': 'ArticlesController.test',
+
+  'PUT /api/tags': 'TagsController.create'
 
 
    /*
@@ -61,6 +64,9 @@ module.exports.routes = {
     PUT /sources/1/unsubscribe
 
     POST /articles
+
+    POST /tags
+    PUT /tags
 
     PUT /users
    */

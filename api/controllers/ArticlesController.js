@@ -1,15 +1,18 @@
 var feed = require("feed-read");
-var encoding = require("encoding");
+// var encoding = require("encoding");
+var async = require('async');
 
 module.exports = {
     set_latest: set_latest,
     list: list,
-    test: test
+    update: update,
+    test:test
 }
 
 function list(req, res) {
+    var currentUserId = req.options.is_authorized ? req.session.user_id : null;
     var options = {
-        user: req.options.is_authorized ? req.session.user_id : null
+        tagsForUserId: currentUserId
     }
     ArticleService.getArticles(options)
         .then(function(response) {
@@ -20,6 +23,31 @@ function list(req, res) {
         })
 }
 
+function update(req, res) {
+    var article = {};
+    async.waterfall([
+        function(cb) {
+            if(req.body.tags) {
+                ArticleService.alterTags({
+                    userId: req.options.is_authorized ? req.session.user_id : null,
+                    tags: req.body.tags,
+                    articleId: req.params.articleId
+                }).then(function(res) {
+                    cb(null, res)
+                }, function(err) {
+                    cb(err);
+                })
+            }
+        }
+    ], function(err) {
+        if(err) {
+            return res.json(200, { error: err });
+        }
+        return res.json(200, { success: 'Success'});
+    })
+    
+}
+
 function set_latest(req, res) {
     ArticleService.setLatestArticles()
         .then(function(err, response) {
@@ -27,14 +55,18 @@ function set_latest(req, res) {
         })
 }
 
+
+
+
 function test(req, res) {
-    feed('http://football.ua/rss2.ashx', function(err, articles) {
-        articles.map(function(article) {
-            article.title = encoding.convert(JSON.parse( JSON.stringify(article.title)), 'UTF-8', 'utf8').toString('utf8');
-            article.content = JSON.parse( JSON.stringify(article.content));
-        })
-        return res.json(200, { success: 'Success', results: articles });
-    })
+    UserTagged.findOrCreate({
+        user: 1,
+        article: 1,
+        tag: 1
+      }).exec(function(err, association) {
+        console.log('err', err)
+        return res.json(200, { success: 'Success', results: association});
+      }) 
 }
 
 
