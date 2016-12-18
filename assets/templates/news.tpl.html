@@ -1,6 +1,10 @@
 <div>
 	<div ng-repeat="article in news">
 		<h3>{{article.title}}</h3>
-		<h5>{{article.desctiption}}</h5>
+		<h5>{{article.description}}</h5>
+		<div>
+			<span ng-repeat="tag in article.tags" class="btn btn-default">{{tag.name}}</span>
+		</div>
+		<hr />
 	</div>
 </div>
