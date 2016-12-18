@@ -1,0 +1,19 @@
+version: '2'
+services:
+  db:
+    image: 'mysql:5.7'
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=59722795
+      - MYSQL_DATABASE=rss_aggregator
+  server:
+    build: .
+    links:
+      - "db"
+    environment:
+      - DATABASE_HOST=db
+    ports:
+      - "1337:1337"
+    command: sails lift
+    restart: always
