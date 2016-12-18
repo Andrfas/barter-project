@@ -9,13 +9,9 @@ module.exports = {
       type: 'STRING'
     },
 
-    // publication_date: {
-    //   type: 'date'
-    // },
-
-    // news: {
-    //   collection: 'news',
-    //   via: 'source'
-    // }
+    users: {
+      collection:'user',
+      via: 'source_subscribtions'
+    }
   }
 }

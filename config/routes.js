@@ -42,14 +42,28 @@ module.exports.routes = {
   'PUT /api/login': 'AuthorizationController.signIn',
   'PUT /api/logout': 'AuthorizationController.signOut',
 
-  'PUT /api/story': 'SourcesController.create',
+  'PUT /api/users': 'UsersController.create',
+
+  // 'POST /api/sources': 'SourcesController.list',
+  // 'GET /api/sources/:sourceId': 'SourcesController.get',
+  'PUT /api/sources/:sourceId/subscribe': 'SourcesController.subscribeToSource',
+  // 'PUT /api/sources/:sourceId/subscribe': 'SourcesController.unsubscribeFromSource',
+
+  'POST /api/articles': 'ArticlesController.list',
   'PUT /api/article/set_latest': 'ArticlesController.set_latest',
   'PUT /api/article/test': 'ArticlesController.test',
 
-  'POST /api/articles': 'ArticlesController.list',
 
-  'PUT /api/user': 'UsersController.create',
+   /*
+    POST /sources
+    GET /sources/1
+    PUT /sources/1/subscribe
+    PUT /sources/1/unsubscribe
 
+    POST /articles
+
+    PUT /users
+   */
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *

@@ -3,6 +3,7 @@ var feed = require("feed-read");
 var utf8 = require('utf8');
 var async = require('async');
 var encoding = require('encoding');
+var iconv = require('iconv');
 
 module.exports = {
 
@@ -52,7 +53,7 @@ module.exports = {
               };
 
               Article.findOrCreate({
-                title: myString = encode(article.title ),
+                title: encode(article.title ),
                 description: encode(article.content ),
                 link: encode(article.link)
               }, articleObj, function(err, createdOrFoundObj) {
@@ -92,5 +93,6 @@ module.exports = {
 }
 
 function encode(str) {
-  return encoding.convert(JSON.parse( JSON.stringify(str)), 'UTF-8', 'utf8').toString('utf8');
+  return JSON.parse(JSON.stringify(str));
+  // return encoding.convert(str, 'UTF-8', 'CP1255').toString('UTF-8');
 }

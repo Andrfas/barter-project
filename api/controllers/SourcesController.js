@@ -2,22 +2,35 @@
 // var async = require('async');
 // var CommonFunctions = require('../../api/services/CommonFunctions.js');
 module.exports = {
-    create: create
+    create: create,
+    subscribeToSource: subscribeToSource
 }
 
 function create(req, res) {
-    console.log('AAAAAAAAAAAAAAAAA')
     var story = {
-        name: 'up_general',
-        url : 'http://www.pravda.com.ua/rss/'
+        name: req.body.name,
+        url : req.body.url
     };
     Source.create(story).exec(function(err, result){
         if (err) {
             sails.log.debug('Some error occured ' + err);
             return res.json(500, { error: 'Some error occured' });
         }
-        sails.log.debug('Success', JSON.stringify(result));
-        return res.json(200, { success: 'Success' });
+        return res.json(200, { success: 'Success', data: result });
+    });
+}
+
+function subscribeToSource(req, res) {
+    var obj = {
+        sourceId: req.params.sourceId,
+        userId : req.session.user_id
+    };
+    SourceSubscribtionService.subscribe(obj).then(function(subscribtion){
+        return res.json(200, { success: 'Success', data: subscribtion });
+    }, function(err) {
+        sails.log.debug('Some error occured ' + err);
+        return res.json(500, { error: 'Some error occured' });
+        
     });
 }
 

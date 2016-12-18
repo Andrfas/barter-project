@@ -11,6 +11,12 @@ module.exports = {
     credentials: {
       collection:'credentials',
       via: 'user'
+    },
+
+    source_subscribtions: {
+      collection:'source',
+      via: 'users',
+      dominant: true
     }
   }
 }
