@@ -8,7 +8,6 @@ services:
   - mysql
   - docker
 
-services:
 
 before_script:
   - git config --global user.email "andrfas@gmail.com"
