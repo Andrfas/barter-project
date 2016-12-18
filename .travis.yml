@@ -5,7 +5,6 @@ node_js:
   - "5"
 
 services:
-  - mysql
   - docker
 
 
@@ -13,4 +12,5 @@ before_script:
   - git config --global user.email "andrfas@gmail.com"
   - git config --global user.name "Andrey Mikh"
   - docker build -t aggregator .
-  - docker run -p 1337:1337  --link mysql -e DATABASE_HOST=mysql aggregator sails lift
+  - docker run -p 3306:3306 --name aggregator-mysql -e MYSQL_ROOT_PASSWORD=59722795 -e MYSQL_DATABASE=rss_aggregator  mysql:5.7
+  - docker run -p 1337:1337  --link aggregator-mysql -e DATABASE_HOST=aggregator-mysql aggregator sails lift
