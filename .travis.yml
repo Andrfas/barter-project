@@ -5,16 +5,13 @@ node_js:
 
 services:
   - docker
-  - mysql
 sudo: required
 
 
 
 before_script:
-  - mysql -u root -e 'CREATE DATABASE rss_aggregator;'
-  - echo "USE mysql;\nUPDATE user SET password=PASSWORD('59722795') WHERE user='root';\nFLUSH PRIVILEGES;\n" | mysql -u root
-  - sails lift &
-  - sleep 10
-
+  - docker run -p 3307:3306 --name aggregator-mysql -e MYSQL_ROOT_PASSWORD=59722795 -e MYSQL_DATABASE=rss_aggregator  mysql:5.7
+  - bash -c "bash ./wait-for-it.sh db:3306 -t 300 && docker run -p 1337:1337  --link aggregator-mysql -e DATABASE_HOST=aggregator-mysql aggregator sails lift"
+  
 script:
   - grunt testServer
