@@ -18,5 +18,5 @@ before_script:
   - sleep 60 
   - docker run -d -p 1337:1337  --link aggregator-mysql -e DATABASE_HOST=aggregator-mysql aggregator sails lift
   - sleep 30
-  - grunt testServer"
+  - grunt testServer
   
