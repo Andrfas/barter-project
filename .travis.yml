@@ -16,6 +16,7 @@ before_script:
   - git config --global user.email "andrfas@gmail.com"
   - git config --global user.name "Andrey Mikh"
   - mysql -u root -e 'CREATE DATABASE rss_aggregator;'
+  - node app.js
 
 script:
   - grunt testServer
