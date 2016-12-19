@@ -40,8 +40,7 @@
   },
   "scripts": {
     "debug": "node debug app.js",
-    "start": "sails lift",
-    "test": "jasmine-node tests/api.js"
+    "start": "sails lift"
   },
   "main": "app.js",
   "repository": {
