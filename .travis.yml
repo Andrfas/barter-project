@@ -7,6 +7,9 @@ services:
   - docker
 sudo: required
 
+before_install:
+ - chmod +x wait-for-it.sh
+
 
 
 before_script:
