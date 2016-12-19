@@ -8,12 +8,11 @@ services:
   - mysql
 sudo: required
 
-env:
-  - DATABASE_PASS=""
 
 
 before_script:
   - mysql -u root -e 'CREATE DATABASE rss_aggregator;'
+  - echo "USE mysql;\nUPDATE user SET password=PASSWORD('59722795') WHERE user='root';\nFLUSH PRIVILEGES;\n" | mysql -u root
   - sails lift &
   - sleep 10
 
