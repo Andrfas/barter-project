@@ -15,5 +15,7 @@ services:
       - DATABASE_HOST=db
     ports:
       - "1337:1337"
-    command: sails lift
+    command: bash -c "bash ./wait-for-it.sh db:3306 -t 300 && sails lift"
+    depends_on:
+      - db
     restart: always

@@ -35,9 +35,9 @@ module.exports.connections = {
   mysql: {
     adapter    : 'sails-mysql',
     host      : process.env.DATABASE_HOST || '127.0.0.1',
-    port      :  3306,
+    port      :  process.env.DATABASE_PORT || 3306,
     user      : 'root',
-    password  : '59722795',
+    password  : process.env.DATABASE_PASS || '59722795',
     database  : 'rss_aggregator'
   }
 

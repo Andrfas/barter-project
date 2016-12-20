@@ -22,7 +22,7 @@ module.exports = function(grunt) {
     'uglify',
     'cssmin',
     'linkAssetsBuildProd',
-    'clean:build',
+    // 'clean:build',
     'copy:build'
   ]);
 };

@@ -1,0 +1,22 @@
+language: node_js
+
+node_js:
+  - "5"
+
+services:
+  - docker
+sudo: required
+
+before_install:
+ - chmod +x wait-for-it.sh
+
+
+
+before_script:
+  - docker build -t aggregator .
+  - docker run -d -p 3307:3306 --name aggregator-mysql -e MYSQL_ROOT_PASSWORD=59722795 -e MYSQL_DATABASE=rss_aggregator  mysql:5.7
+  - sleep 60 
+  - docker run -d -p 1337:1337  --link aggregator-mysql -e DATABASE_HOST=aggregator-mysql aggregator sails lift
+  - sleep 30
+  - grunt testServer
+  
