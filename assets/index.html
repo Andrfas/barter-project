@@ -11,6 +11,7 @@
 
     <!-- MetisMenu CSS -->
     <link href="/styles/main.css" rel="stylesheet">
+    <link href="/styles/styles.css" rel="stylesheet">
     <link href="/styles/font-awesome.min.css" rel="stylesheet" type="text/css">
   </head>
 
@@ -37,19 +38,9 @@
         </li>
       </ul>
       <div class="sidebar-footer">
-        <div class="col-xs-4">
+        <div class="col-xs-12">
           <a href="https://github.com/rdash/rdash-angular" target="_blank">
             Github
-          </a>
-        </div>
-        <div class="col-xs-4">
-          <a href="https://github.com/rdash/rdash-angular/blob/master/README.md" target="_blank">
-            About
-          </a>
-        </div>
-        <div class="col-xs-4">
-          <a href="#">
-            Support
           </a>
         </div>
       </div>
@@ -67,6 +58,7 @@
                 <a href="#" class="dropdown-toggle" uib-dropdown-toggle>
                   <img src="img/avatar.jpg">
                 </a>
+
                 <ul class="dropdown-menu dropdown-menu-right">
                   <li class="dropdown-header">
                     Joe Bloggs
@@ -95,9 +87,10 @@
                   </li>
                 </ul>
               </div>
-              <div ng-if="!$root.authorized" class="item">
-                <button ui-sref="app.login" class="btn btn-success">LOGIN</button>
-                <button ui-sref="app.register" class="btn btn-success">REGISTER</button>
+
+              <div ng-if="!$root.authorized" class="buttons-nav">
+                <button ui-sref="app.login" class="btnLogin btn">Login</button>
+                <button ui-sref="app.register" class="btnSignUp btn">Sign up</button>
               </div>
               <!-- <div class="item dropdown" uib-dropdown>
                <a href="#" class="dropdown-toggle" uib-dropdown-toggle>
@@ -127,7 +120,8 @@
         <!-- End Header Bar -->
 
         <!-- Main Content -->
-        <div ui-view></div>
+        <div ui-view>
+        </div>
 
       </div><!-- End Page Content -->
     </div><!-- End Content Wrapper -->

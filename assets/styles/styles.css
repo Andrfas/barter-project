@@ -1,0 +1,87 @@
+:root {
+  --yellow: #fecf33;
+  --yellow-70pc: rgba(254, 207, 51, 0.7);
+  --pale-orange: #ffcb03;
+  --orange: #f69833;
+  --light-orange: #fdbd39;
+  --peach: #ee6723;
+  --light-green: #c8cf2d;
+  --cornflower-blue: #419bf9;
+  --cornflower-blue-50pc: rgba(65, 154, 249, 0.5);
+  --whitey: #f2f2f2;
+  --warm-gray: #bcb5b9;
+  --maroon: #574751;
+  --maroon-70pc: rgba(87, 71, 81, 0.7);
+  --maroon-60pc: rgba(87, 71, 81, 0.6);
+
+  --light-gray: #f6f6f6;
+
+  --middle-gray: #eae8ea;
+}
+
+/** {*/
+  /*outline: 1px solid red;*/
+/*}*/
+
+.buttons-nav {
+  display: inline-block;
+  margin: 13px 20px 13px;
+}
+
+.myContainer {
+  width: 100%;
+}
+
+.title {
+  color: var(--maroon);
+  font-size: 30px;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+.registerForm, .loginForm {
+  position: relative;
+  display: block;
+  max-width: 392px;
+  width: 100%;
+  margin: 12px auto 0;
+}
+
+.link-login {
+  color: var(--light-green);
+}
+
+/*BUTTONS*/
+.btnLogin, .btnSignUp {
+  color: #fff;
+  border-radius: 0;
+}
+
+.btnLogin:hover,  .btnLogin:active,  .btnLogin:focus,
+.btnSignUp:hover, .btnSignUp:active, .btnSignUp:focus {
+  color: #fff;
+}
+
+.btnLogin {
+  background-color: var(--light-green);
+}
+
+.btnSignUp {
+  background-color: var(--light-orange);
+}
+/*END BUTTONS*/
+
+.footerCase {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+.footerCase > span {
+  color: var(--maroon-60pc);
+}
+
+.link-login:hover {
+  text-decoration: none;
+  color: var(--light-green);
+}

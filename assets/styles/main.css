@@ -20,7 +20,7 @@
 
 /**
  * Hamburg Menu
- * When the class of 'hamburg' is applied to the body tag of the document, 
+ * When the class of 'hamburg' is applied to the body tag of the document,
  * the sidebar changes it's style to attempt to mimic a menu on a phone app,
  * where the content is overlaying the content, rather than push it.
  */
@@ -56,7 +56,7 @@
  */
 .row.header {
   height: 60px;
-  background: #fff;
+  background: #f6f6f6;
   margin-bottom: 15px;
 }
 .row.header > div:last-child {
@@ -204,11 +204,13 @@
 html {
   overflow-y: scroll;
 }
+
 body {
-  background: #f3f3f3;
+  background: #fff;
   font-family: "Montserrat";
   color: #333333 !important;
 }
+
 .row {
   margin-left: 0 !important;
   margin-right: 0 !important;
