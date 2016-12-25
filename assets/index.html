@@ -121,6 +121,42 @@
 
         <!-- Main Content -->
         <div ui-view>
+          <div ng-controller="NewsCtrl">
+            <div class="newsChannel" ng-repeat="article in news">
+
+              <div class="itemContent col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+                <h2 class="itemTitle">
+                  <a rel="external" class="itemLink" href="{{article.link}}" target="_blank">{{article.title}}</a>
+                </h2>
+
+                <ul class="info">
+                  <li class="date">{{article.publication_date}}</li>
+                  <li class="hourCreate">{{article.createdAt}}</li>
+                  <li class="hourUpdate">{{article.updatedAt}}</li>
+                </ul>
+
+
+                <span class="itemDescription">{{article.description}}</span>
+
+                <!--Tags in item of news-->
+                <div class="tagSet" ng-repeat="tag in article.tags">
+
+                  <!--Single tag-->
+                  <div class="tag">
+                    <div class="tagContent">
+                      <p class="tagName">{{tag.name}}</p>
+                      <sup><i class="fa fa-times" aria-hidden="true"></i> </sup>
+                    </div>
+                  </div> <!-- End tag-->
+                </div> <!--  End tagSet-->
+
+
+                <input class="tag newTag" type="text" ng-maxlength="60" name="tag" ng-model="newTag">
+                <input id="addBtn" name="add" value="+" type="submit" ng-click="showNewTag($index)">
+
+              </div> <!-- End itemContent-->
+            </div> <!-- End newsChannel-->
+          </div>
         </div>
 
       </div><!-- End Page Content -->
